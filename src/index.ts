@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import router from './routes/api/v1/router';
 import cors from 'cors';
 import helmet from 'helmet';
+import compression from 'compression';
 
 // Create an Express application
 const app = express();
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev'));
 app.use(helmet());
+app.use(compression());
 
 // Routes
 app.use('/api/v1', router);

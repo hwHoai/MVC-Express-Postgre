@@ -39,7 +39,16 @@ export default tseslint.config(
             indent: ['error', 4],
             quotes: ['error', 'single'],
             semi: ['error', 'always'],
-            'comma-dangle': ['error', 'always-multiline'],
+            'comma-dangle': [
+                'error',
+                {
+                    arrays: 'always-multiline', // For arrays: [1, 2,]
+                    objects: 'always-multiline', // For objects: {a: 1,}
+                    imports: 'always-multiline', // For imports: import {a, b,} from '...'
+                    exports: 'always-multiline', // For exports: export {a, b,}
+                    functions: 'never', // For function params: func(a, b)
+                },
+            ],
         },
         files: ['**/*.ts', '**/*.tsx'],
         ignores: ['node_modules/**', 'dist/**', '*.js', '*.mjs'],
